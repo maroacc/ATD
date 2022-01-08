@@ -170,8 +170,10 @@ try:
     # Download xmls
     links = spider(driver)
     download_xml(driver, links)
+    driver.quit()
 except:
     logging.error(f"No existe boletín para la fecha {date}")
+    driver.quit()
     exit(1)
     
 

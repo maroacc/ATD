@@ -5,6 +5,10 @@
 import requests
 from bs4 import BeautifulSoup
 
+def print_json(dic, file_path):
+    with open(file_path, "w") as output_file:
+        json.dump(dic, output_file)
+
 # Get the URLs
 #TODO: poner para q lea las url del otro archivo
 with open(file_path, 'r') as f:
@@ -50,4 +54,6 @@ data = { "seal" : target_table.find("a").find("img")["src"],
          "logo" : target_table.find_all("td", class_ = "infobox-full-data")[1].find("img")["src"]
 }
 
-
+# Store data in json file
+file_path = r"comillas.json"
+print_json(data, file_path)

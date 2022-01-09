@@ -1,5 +1,3 @@
-# TODO: verificar que hay las mismas entradas que en json
-
 import json
 import csv
 

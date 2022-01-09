@@ -37,7 +37,7 @@ for i in range(3, 12):
 
 
 # Create or open a csv file to write to
-file_path = r'C:\Users\Maria\github\ATD\Practica9\countries.csv'
+file_path = r'countries.csv'
 with open(file_path, 'w', newline = "") as f:
     writer = csv.writer(f, delimiter = ";")
     for row in countries:
@@ -56,38 +56,34 @@ with open(file_path, 'r') as f:
     country_matrix = [row for row in reader]
 
 
-for row in matrix:
+for row in country_matrix:
     if row[0] == 'Germany':
         relative_url = row[1]
+        # Download the HTML of German Univeristies
+        country = "Germany"
+        url = f"https://en.wikipedia.org/{relative_url}"
+        response = requests.get(url)
+
+        # Parse the German Universities' HTML
+        soup = BeautifulSoup(response.content, "html.parser")
 
 
-# Download the HTML of German Univeristies
-# ------IMPORTANT!!--------
-# Normally this part would be located inside of the loop but
-# it is inconvenient in Jupyter Notebooks
-country = "Germany"
-url = f"https://en.wikipedia.org/{relative_url}"
-response = requests.get(url)
-
-# Parse the German Universities' HTML
-soup = BeautifulSoup(response.content, "html.parser")
+        # Loop the continents (and subcontinents)
+        navigation_list = soup.find_all("ul")
+        universities = [] # List of countries
+        for i in range(3, 12):
+            universities_list = navigation_list[i].find_all("li")
+            for item in universities_list:
+                if ".jpg" not in item.find("a")["href"].lower():
+                    universities.append([country, url, item.text, item.find("a")["href"]])
 
 
-# Loop the continents (and subcontinents)
-navigation_list = soup.find_all("ul")
-universities = [] # List of countries
-for i in range(3, 12):
-    universities_list = navigation_list[i].find_all("li")
-    for item in countries_list:
-        universities.append([country, url, item.text, item.find("a")["href"]])
-
-
-# Create or open a csv file to write to
-file_path = r'C:\Users\Maria\github\ATD\Practica9\universities.csv'
-with open(file_path, 'w', newline = "") as f:
-    writer = csv.writer(f, delimiter = ";")
-    for row in universities:
-        writer.writerow(row)
+        # Create or open a csv file to write to
+        file_path = r'universities.csv'
+        with open(file_path, 'w', newline = "") as f:
+            writer = csv.writer(f, delimiter = ";")
+            for row in universities:
+                writer.writerow(row)
 
 
 

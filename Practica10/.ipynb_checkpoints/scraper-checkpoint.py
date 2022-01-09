@@ -30,9 +30,11 @@ def find_university_data(soup, university, url):
     -------
     soup : BeautifulSoup.soup
     
-    university: name of the university
+    university: string
+        name of the university
     
-    url: url to the wikipedia page of the university
+    url: string
+        url to the wikipedia page of the university
 
     Return
     -------

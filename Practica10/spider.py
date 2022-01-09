@@ -71,12 +71,17 @@ for row in country_matrix:
         # Loop the continents (and subcontinents)
         navigation_list = soup.find_all("ul")
         universities = [] # List of countries
+        links = []
         for i in range(3, 12):
             universities_list = navigation_list[i].find_all("li")
             for item in universities_list:
+                # Check that its not an image
                 if ".jpg" not in item.find("a")["href"].lower():
-                    universities.append([country, url, item.text, item.find("a")["href"]])
-
+                    link = item.find("a")["href"]
+                    # Check that the link is not repeated
+                    if link not in links:
+                        universities.append([country, url, item.text, link])
+                        links.append(link)
 
         # Create or open a csv file to write to
         file_path = r'universities.csv'

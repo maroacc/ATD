@@ -11,4 +11,5 @@ Some of the expected issues deriving from the escalation to all the countries pa
 - The lists will probably have a different format (eg in Algeria the list is inside a table and in Germany inside of a list), so the code must be changed to take this into account.
 - Not all universities will have a wikipedia page, instead the link will reference the universities official webpage so they will be completely different from each other and the scraper will have to be customized for each page.  
 - Some wikipedia pages will not be written in English and some may even be written with a different alphabet.
+- The number of requests required for the spider and the scraper may be too much even for Wikipedia to handle, causing them to think they are experiencing a DoS attack and blocking our IP.
 

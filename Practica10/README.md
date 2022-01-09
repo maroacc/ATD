@@ -1,44 +1,14 @@
-# ATD
-Repository for the Data Adquisition and Treatment course. Includes dealing with APIs and Web Scraping frameworks such as BeautifulSoup and Selenium in Python.
-
-## Labs
-
-#### Practica 1 - Postman
-HTTP request to the Google Places Api
-
-#### Practica 2 - Requests + AEMET
-HTTP requests to the AEMET api
-
-#### Practica 3 - Requests LinkedIn
-HTTP request to LinkedIn
-
-#### Practica 4 - Kobe Bryant
-Parse json file from NBA stats
-
-#### Practica 5 - Requests with headers
-HTTP requests to the twitter API with headers
-
-#### Practica 6 - Wrongly formatted CSV
-Reformat CSV
-
-#### Practica 7 - BeautifulSoup
-Webscrapping of a wikipedia page using BeautifulSoup
-
-#### Practica 8 - BeautifulSoup + JSON
-Webscrapping of a wikipedia page using BeautifulSoup
-
-#### Practica 9 - Spider
-Construct a spider script for wikipedia links to universities around the world
-
-#### Practica 10 - Spider + Scraper
+# Practica 10 - Spider + Scraper
 Construct spider and scraper scripts for wikipedia pages of universities around the world
 
-#### Practica 12 - Selenium + Chromedriver
-Webscrapping of electricity prices using Selenium
+### Future Work Analysis
 
-#### Practica 13 - BORME
-Download pdfs from the Spanish Commercial Registry using HTTP requests and Selenium
+#### How to escalate
+In order to escalate the script to be able to retrieve all the links from all the world universities, it would be necessary to iterate through all the links to all the lists of universities of every country in the countries.csv file
 
-#### Practica 14 - Parser
-Extract and parse text from a pdf file
+#### Expected issues
+Some of the expected issues deriving from the escalation to all the countries pages will be:
+- The lists will probably have a different format (eg in Algeria the list is inside a table and in Germany inside of a list), so the code must be changed to take this into account.
+- Not all universities will have a wikipedia page, instead the link will reference the universities official webpage so they will be completely different from each other and the scraper will have to be customized for each page.  
+- Some wikipedia pages will not be written in English and some may even be written with a different alphabet.
 
